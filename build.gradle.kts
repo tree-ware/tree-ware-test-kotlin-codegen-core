@@ -4,25 +4,17 @@ group = "org.tree-ware.tree-ware-test-kotlin-codegen-core"
 version = "0.1.0.0"
 
 plugins {
-    kotlin("jvm") version "1.7.0"
+    kotlin("multiplatform") version "1.7.0"
     id("idea")
     // TODO #### version
-    id("org.tree-ware.core") version "generate-diagrams-SNAPSHOT"
-}
-
-treeWare {
-    codegenDirectory.set("generated")
-    metaModel {
-        files.add("src/main/resources/metaModel/address_book_root.json")
-        files.add("src/main/resources/metaModel/address_book_main.json")
-        files.add("src/main/resources/metaModel/address_book_city.json")
-        files.add("src/main/resources/metaModel/geo.json")
-    }
+    id("org.tree-ware.core") version "0.1.0.0"
+// TODO #### used with plugin from jitpack //    id("org.tree-ware.core") version "generate-diagrams-SNAPSHOT"
 }
 
 repositories {
     mavenCentral()
     maven { url = uri("https://jitpack.io") }
+    mavenLocal() // TODO #### remove
 }
 
 tasks.withType<KotlinCompile> {
@@ -30,7 +22,16 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-dependencies {
-    implementation(libs.treeWareKotlinCore)
-    implementation(kotlin("stdlib"))
+kotlin {
+    jvm {
+        withJava()
+    }
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(libs.treeWareKotlinCore)
+                implementation(kotlin("stdlib"))
+            }
+        }
+    }
 }

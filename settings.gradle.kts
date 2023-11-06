@@ -3,12 +3,14 @@ rootProject.name = "test-codegen-core"
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        mavenLocal() // TODO #### delete
         maven { url = uri("https://jitpack.io") }
     }
     resolutionStrategy {
         eachPlugin {
             if (requested.id.id == "org.tree-ware.core") {
-                useModule("org.tree-ware.tree-ware-gradle-core-plugin:org.tree-ware.core.gradle.plugin:${requested.version}")
+// TODO #### was used with jitpack//                useModule("org.tree-ware.tree-ware-gradle-core-plugin:org.tree-ware.core.gradle.plugin:${requested.version}")
+                useModule("org.tree-ware.tree-ware-gradle-core-plugin:core-plugin:${requested.version}")
             }
         }
     }
