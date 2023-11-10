@@ -24,6 +24,11 @@ dependencyResolutionManagement {
             library("treeWareKotlinCore", "org.tree-ware.tree-ware-kotlin-core", "core").versionRef(
                 treeWareKotlinCoreVersion
             )
+            library(
+                "treeWareKotlinCoreTestFixtures",
+                "org.tree-ware.tree-ware-kotlin-core",
+                "test-fixtures"
+            ).versionRef(treeWareKotlinCoreVersion)
         }
     }
 }

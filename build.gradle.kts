@@ -9,6 +9,7 @@ plugins {
     // TODO #### version
     id("org.tree-ware.core") version "0.1.0.0"
 // TODO #### used with plugin from jitpack //    id("org.tree-ware.core") version "generate-diagrams-SNAPSHOT"
+    id("com.dorongold.task-tree") version "2.1.1" // for listing task dependencies
 }
 
 repositories {
@@ -31,6 +32,12 @@ kotlin {
             dependencies {
                 implementation(libs.treeWareKotlinCore)
                 implementation(kotlin("stdlib"))
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(libs.treeWareKotlinCoreTestFixtures)
+                implementation(kotlin("test"))
             }
         }
     }
