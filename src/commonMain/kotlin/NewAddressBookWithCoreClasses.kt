@@ -5,7 +5,7 @@ fun newAddressBookWithCoreClasses(auxName: String): MainModel {
     main.setAux(auxName, "Aux at address_book level")
     val root = main.getOrNewRoot()
     setStringSingleField(root, "name", "Address Book")
-    setTimestampSingleField(root, "last_updated", 1587147731L)
+    setTimestampSingleField(root, "last_updated", 1587147731UL)
 
     val settingsField = getOrNewMutableSingleField(root, "settings")
     settingsField.setAux(auxName, "Aux for settings")
@@ -37,6 +37,12 @@ fun newAddressBookWithCoreClasses(auxName: String): MainModel {
     setStringSingleField(clark, "first_name", "Clark")
     setStringSingleField(clark, "last_name", "Kent")
     setStringSingleField(clark, "hero_name", "Superman")
+    setPassword1waySingleField(clark, "password") {
+        unhashed = "kryptonite"
+    }
+    setPassword2waySingleField(clark, "main_secret") {
+        unencrypted = "Alien from Krypton"
+    }
     val clarkRelations = getOrNewMutableSetField(clark, "relation")
     clarkRelations.setAux(auxName, "Aux for Clark's relation list")
     val clarkRelationToLois = addRelation(
@@ -58,6 +64,14 @@ fun newAddressBookWithCoreClasses(auxName: String): MainModel {
     setUuidSingleField(lois, "id", "a8aacf55-7810-4b43-afe5-4344f25435fd")
     setStringSingleField(lois, "first_name", "Lois")
     setStringSingleField(lois, "last_name", "Lane")
+    setPassword1waySingleField(lois, "password") {
+        hashed = "test-hashed-lois"
+        hashVersion = 1
+    }
+    setPassword2waySingleField(lois, "main_secret") {
+        encrypted = "test-encrypted-main-secret"
+        cipherVersion = 1
+    }
     val loisRelations = getOrNewMutableSetField(lois, "relation")
     val loisRelationToClark = addRelation(
         loisRelations,
