@@ -1,3 +1,5 @@
+import addressBook.main.AddressBookColor
+import addressBook.main.AddressBookRelationship
 import org.treeWare.model.assertMatchesJson
 import org.treeWare.model.decoder.stateMachine.MultiAuxDecodingStateMachineFactory
 import org.treeWare.model.decoder.stateMachine.StringAuxStateMachine
@@ -55,6 +57,11 @@ class GeneratedClassesJsonCodecTests {
         assertEquals(true, mutableModel.modelRoot?.settings?.lastNameFirst)
         assertEquals(false, model.modelRoot?.settings?.encryptHeroName)
         assertEquals(false, mutableModel.modelRoot?.settings?.encryptHeroName)
+        assertEquals(AddressBookColor.WHITE, model.modelRoot?.settings?.backgroundColor)
+        assertEquals(AddressBookColor.WHITE, mutableModel.modelRoot?.settings?.backgroundColor)
+
+        assertEquals(AddressBookColor.VIOLET, model.modelRoot?.settings?.advanced?.borderColor)
+        assertEquals(AddressBookColor.VIOLET, mutableModel.modelRoot?.settings?.advanced?.borderColor)
 
         assertEquals(2, model.modelRoot?.groups?.count())
         assertEquals(2, mutableModel.modelRoot?.groups?.count())
@@ -107,6 +114,8 @@ class GeneratedClassesJsonCodecTests {
         val mutablePerson0Relation0 = mutablePerson0?.relation?.elementAt(0)
         assertEquals("05ade278-4b44-43da-a0cc-14463854e397", person0Relation0?.id)
         assertEquals("05ade278-4b44-43da-a0cc-14463854e397", mutablePerson0Relation0?.id)
+        assertEquals(AddressBookRelationship.COLLEAGUE, person0Relation0?.relationship)
+        assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson0Relation0?.relationship)
         //
         val person1 = model.modelRoot?.person?.elementAt(1)
         val mutablePerson1 = mutableModel.modelRoot?.person?.elementAt(1)
@@ -135,11 +144,12 @@ class GeneratedClassesJsonCodecTests {
         val mutablePerson1Relation0 = mutablePerson1?.relation?.elementAt(0)
         assertEquals("16634916-8f83-4376-ad42-37038e108a0b", person1Relation0?.id)
         assertEquals("16634916-8f83-4376-ad42-37038e108a0b", mutablePerson1Relation0?.id)
+        assertEquals(AddressBookRelationship.COLLEAGUE, person1Relation0?.relationship)
+        assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson1Relation0?.relationship)
 
 //        assertNotNull(mutableModel.modelRoot?.cityInfo)
 //        assertNotNull(mutableModel.modelRoot?.cityInfo)
 
-        // TODO: test enumeration fields
         // TODO: test association fields
 
         // Encode the model to JSON and compare against the original to ensure that reading the elements in the model

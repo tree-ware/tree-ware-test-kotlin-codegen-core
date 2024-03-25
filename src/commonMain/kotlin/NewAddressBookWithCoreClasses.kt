@@ -16,6 +16,10 @@ fun newAddressBookWithCoreClasses(auxName: String): MainModel {
     addEnumerationListFieldElement(cardColors, "orange").setAux(auxName, "Aux for scalar element in list")
     addEnumerationListFieldElement(cardColors, "green").setAux(auxName, "Aux for list element green")
     addEnumerationListFieldElement(cardColors, "blue").setAux(auxName, "Aux for another scalar list element")
+    setEnumerationSingleField(settings, "background_color", "white")
+
+    val advanced = getOrNewMutableSingleEntity(settings, "advanced")
+    setEnumerationSingleField(advanced, "border_color", "violet")
 
     val groups = getOrNewMutableSetField(root, "groups")
     val dc = getNewMutableSetEntity(groups)

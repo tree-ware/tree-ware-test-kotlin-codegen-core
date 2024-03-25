@@ -20,7 +20,11 @@
           "aux_": "Aux for another scalar list element",
           "value": "blue"
         }
-      ]
+      ],
+      "background_color": "white",
+      "advanced": {
+        "border_color": "violet"
+      }
     },
     "groups": [
       {
