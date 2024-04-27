@@ -116,6 +116,18 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("05ade278-4b44-43da-a0cc-14463854e397", mutablePerson0Relation0?.id)
         assertEquals(AddressBookRelationship.COLLEAGUE, person0Relation0?.relationship)
         assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson0Relation0?.relationship)
+        val person0Relation0Person =  person0Relation0?.person
+        val mutablePerson0Relation0Person =  mutablePerson0Relation0?.person
+        assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", person0Relation0Person?.person?.elementAt(0)?.id)
+        assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", mutablePerson0Relation0Person?.person?.elementAt(0)?.id)
+        //
+        val person0Group = person0?.group
+        val mutablePerson0Group = mutablePerson0?.group
+        assertEquals("DC", person0Group?.groups?.elementAt(0)?.name)
+        assertEquals("DC", mutablePerson0Group?.groups?.elementAt(0)?.name)
+        // TODO: the following self-referential entity access fails
+//        assertEquals("Superman", person0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
+//        assertEquals("Superman", mutablePerson0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
         //
         val person1 = model.modelRoot?.person?.elementAt(1)
         val mutablePerson1 = mutableModel.modelRoot?.person?.elementAt(1)
@@ -146,11 +158,22 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("16634916-8f83-4376-ad42-37038e108a0b", mutablePerson1Relation0?.id)
         assertEquals(AddressBookRelationship.COLLEAGUE, person1Relation0?.relationship)
         assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson1Relation0?.relationship)
+        val person1Relation0Person =  person1Relation0?.person
+        val mutablePerson1Relation0Person =  mutablePerson1Relation0?.person
+        assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", person1Relation0Person?.person?.elementAt(0)?.id)
+        assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", mutablePerson1Relation0Person?.person?.elementAt(0)?.id)
+        //
+        val person1Group = person1?.group
+        val mutablePerson1Group = mutablePerson1?.group
+        assertEquals("DC", person1Group?.groups?.elementAt(0)?.name)
+        assertEquals("DC", mutablePerson1Group?.groups?.elementAt(0)?.name)
+        // TODO: the following self-referential entity access fails
+//        assertEquals("Superman", person1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
+//        assertEquals("Superman", mutablePerson1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
 
+// TODO
 //        assertNotNull(mutableModel.modelRoot?.cityInfo)
 //        assertNotNull(mutableModel.modelRoot?.cityInfo)
-
-        // TODO: test association fields
 
         // Encode the model to JSON and compare against the original to ensure that reading the elements in the model
         // does not create new elements. Test both `model` and `mutableModel` in case there are differences in their
