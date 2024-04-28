@@ -73,9 +73,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals(1, group0?.subGroups?.count())
         assertEquals(1, mutableGroup0?.subGroups?.count())
         ////
-        // TODO: the following self-referential entity access fails
-        // assertEquals("Superman", group0?.subGroups?.elementAt(0)?.name)
-        // assertEquals("Superman", mutableGroup0?.subGroups?.elementAt(0)?.name)
+        assertEquals("Superman", group0?.subGroups?.elementAt(0)?.name)
+        assertEquals("Superman", mutableGroup0?.subGroups?.elementAt(0)?.name)
         //
         val group1 = model.modelRoot?.groups?.elementAt(1)
         val mutableGroup1 = mutableModel.modelRoot?.groups?.elementAt(1)
@@ -116,8 +115,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("05ade278-4b44-43da-a0cc-14463854e397", mutablePerson0Relation0?.id)
         assertEquals(AddressBookRelationship.COLLEAGUE, person0Relation0?.relationship)
         assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson0Relation0?.relationship)
-        val person0Relation0Person =  person0Relation0?.person
-        val mutablePerson0Relation0Person =  mutablePerson0Relation0?.person
+        val person0Relation0Person = person0Relation0?.person
+        val mutablePerson0Relation0Person = mutablePerson0Relation0?.person
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", person0Relation0Person?.person?.elementAt(0)?.id)
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", mutablePerson0Relation0Person?.person?.elementAt(0)?.id)
         //
@@ -125,9 +124,8 @@ class GeneratedClassesJsonCodecTests {
         val mutablePerson0Group = mutablePerson0?.group
         assertEquals("DC", person0Group?.groups?.elementAt(0)?.name)
         assertEquals("DC", mutablePerson0Group?.groups?.elementAt(0)?.name)
-        // TODO: the following self-referential entity access fails
-//        assertEquals("Superman", person0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
-//        assertEquals("Superman", mutablePerson0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
+        assertEquals("Superman", person0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
+        assertEquals("Superman", mutablePerson0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
         //
         val person1 = model.modelRoot?.person?.elementAt(1)
         val mutablePerson1 = mutableModel.modelRoot?.person?.elementAt(1)
@@ -158,8 +156,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("16634916-8f83-4376-ad42-37038e108a0b", mutablePerson1Relation0?.id)
         assertEquals(AddressBookRelationship.COLLEAGUE, person1Relation0?.relationship)
         assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson1Relation0?.relationship)
-        val person1Relation0Person =  person1Relation0?.person
-        val mutablePerson1Relation0Person =  mutablePerson1Relation0?.person
+        val person1Relation0Person = person1Relation0?.person
+        val mutablePerson1Relation0Person = mutablePerson1Relation0?.person
         assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", person1Relation0Person?.person?.elementAt(0)?.id)
         assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", mutablePerson1Relation0Person?.person?.elementAt(0)?.id)
         //
@@ -167,13 +165,71 @@ class GeneratedClassesJsonCodecTests {
         val mutablePerson1Group = mutablePerson1?.group
         assertEquals("DC", person1Group?.groups?.elementAt(0)?.name)
         assertEquals("DC", mutablePerson1Group?.groups?.elementAt(0)?.name)
-        // TODO: the following self-referential entity access fails
-//        assertEquals("Superman", person1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
-//        assertEquals("Superman", mutablePerson1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
+        assertEquals("Superman", person1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
+        assertEquals("Superman", mutablePerson1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
 
-// TODO
-//        assertNotNull(mutableModel.modelRoot?.cityInfo)
-//        assertNotNull(mutableModel.modelRoot?.cityInfo)
+        assertEquals(4, model.modelRoot?.cityInfo?.count())
+        assertEquals(4, mutableModel.modelRoot?.cityInfo?.count())
+        //
+        val cityInfo0 = model.modelRoot?.cityInfo?.elementAt(0)
+        val mutableCityInfo0 = mutableModel.modelRoot?.cityInfo?.elementAt(0)
+        ////
+        val cityInfo0City = cityInfo0?.city
+        val mutableCityInfo0City = mutableCityInfo0?.city
+        assertEquals("New York City", cityInfo0City?.name)
+        assertEquals("New York City", mutableCityInfo0City?.name)
+        assertEquals("New York", cityInfo0City?.state)
+        assertEquals("New York", mutableCityInfo0City?.state)
+        assertEquals("United States of America", cityInfo0City?.country)
+        assertEquals("United States of America", mutableCityInfo0City?.country)
+        //
+        assertEquals("One of the most populous and most densely populated major city in USA", cityInfo0?.info)
+        assertEquals("One of the most populous and most densely populated major city in USA", mutableCityInfo0?.info)
+        //
+        val cityInfo1 = model.modelRoot?.cityInfo?.elementAt(1)
+        val mutableCityInfo1 = mutableModel.modelRoot?.cityInfo?.elementAt(1)
+        ////
+        val cityInfo1City = cityInfo1?.city
+        val mutableCityInfo1City = mutableCityInfo1?.city
+        assertEquals("Albany", cityInfo1City?.name)
+        assertEquals("Albany", mutableCityInfo1City?.name)
+        assertEquals("New York", cityInfo1City?.state)
+        assertEquals("New York", mutableCityInfo1City?.state)
+        assertEquals("United States of America", cityInfo1City?.country)
+        assertEquals("United States of America", mutableCityInfo1City?.country)
+        //
+        assertEquals("Capital of New York state", cityInfo1?.info)
+        assertEquals("Capital of New York state", mutableCityInfo1?.info)
+        //
+        val cityInfo2 = model.modelRoot?.cityInfo?.elementAt(2)
+        val mutableCityInfo2 = mutableModel.modelRoot?.cityInfo?.elementAt(2)
+        ////
+        val cityInfo2City = cityInfo2?.city
+        val mutableCityInfo2City = mutableCityInfo2?.city
+        assertEquals("Princeton", cityInfo2City?.name)
+        assertEquals("Princeton", mutableCityInfo2City?.name)
+        assertEquals("New Jersey", cityInfo2City?.state)
+        assertEquals("New Jersey", mutableCityInfo2City?.state)
+        assertEquals("United States of America", cityInfo2City?.country)
+        assertEquals("United States of America", mutableCityInfo2City?.country)
+        //
+        assertEquals("Home of Princeton University", cityInfo2?.info)
+        assertEquals("Home of Princeton University", mutableCityInfo2?.info)
+        //
+        val cityInfo3 = model.modelRoot?.cityInfo?.elementAt(3)
+        val mutableCityInfo3 = mutableModel.modelRoot?.cityInfo?.elementAt(3)
+        ////
+        val cityInfo3City = cityInfo3?.city
+        val mutableCityInfo3City = mutableCityInfo3?.city
+        assertEquals("San Francisco", cityInfo3City?.name)
+        assertEquals("San Francisco", mutableCityInfo3City?.name)
+        assertEquals("California", cityInfo3City?.state)
+        assertEquals("California", mutableCityInfo3City?.state)
+        assertEquals("United States of America", cityInfo3City?.country)
+        assertEquals("United States of America", mutableCityInfo3City?.country)
+        //
+        assertEquals("The cultural and financial center of Northern California", cityInfo3?.info)
+        assertEquals("The cultural and financial center of Northern California", mutableCityInfo3?.info)
 
         // Encode the model to JSON and compare against the original to ensure that reading the elements in the model
         // does not create new elements. Test both `model` and `mutableModel` in case there are differences in their
