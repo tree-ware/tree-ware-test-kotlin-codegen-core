@@ -6,7 +6,7 @@ import kotlin.test.Test
 
 private const val AUX_NAME = "aux"
 
-class NewAddressBookWithCoreClasses {
+class CoreClassesJsonCodecTests {
     @Test
     fun `JSON encoding must be correct`() {
         val model = newAddressBookWithCoreClasses(AUX_NAME)
