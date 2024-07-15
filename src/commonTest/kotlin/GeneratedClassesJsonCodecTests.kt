@@ -475,4 +475,15 @@ class GeneratedClassesJsonCodecTests {
             MultiAuxEncoder(auxName to StringAuxEncoder()),
         )
     }
+
+    @Test
+    fun json_encoding_of_model_built_with_dsl_must_be_correct() {
+        val model = newAddressBookWithGeneratedClasses()
+        assertMatchesJson(
+            model,
+            // TODO(deepak-nulu): verify aux encoding when the DSL supports aux data.
+            "address_book_without_aux.json",
+            EncodePasswords.ALL,
+        )
+    }
 }
