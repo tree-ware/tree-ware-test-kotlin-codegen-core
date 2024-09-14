@@ -1,9 +1,10 @@
+import org.treeWare.metaModel.getResolvedRootMeta
 import org.treeWare.model.core.*
 
-fun newAddressBookWithCoreClasses(auxName: String): MainModel {
-    val main = MutableMainModel(addressBookMetaModel)
-    main.setAux(auxName, "Aux at address_book level")
-    val root = main.getOrNewRoot()
+fun newAddressBookWithCoreClasses(auxName: String): EntityModel {
+    val rootEntityMeta = getResolvedRootMeta(addressBookMetaModel)
+    val root = MutableEntityModel(rootEntityMeta, null)
+    root.setAux(auxName, "Aux at address_book level")
     setStringSingleField(root, "name", "Address Book")
     setTimestampSingleField(root, "last_updated", 1587147731UL)
 
@@ -12,10 +13,6 @@ fun newAddressBookWithCoreClasses(auxName: String): MainModel {
     val settings = getOrNewMutableSingleEntity(root, "settings")
     setBooleanSingleField(settings, "last_name_first", true)
     setBooleanSingleField(settings, "encrypt_hero_name", false)
-    val cardColors = getOrNewMutableListField(settings, "card_colors")
-    addEnumerationListFieldElement(cardColors, "orange").setAux(auxName, "Aux for scalar element in list")
-    addEnumerationListFieldElement(cardColors, "green").setAux(auxName, "Aux for list element green")
-    addEnumerationListFieldElement(cardColors, "blue").setAux(auxName, "Aux for another scalar list element")
     setEnumerationSingleField(settings, "background_color", "white")
 
     val advanced = getOrNewMutableSingleEntity(settings, "advanced")
@@ -103,37 +100,15 @@ fun newAddressBookWithCoreClasses(auxName: String): MainModel {
         "info",
         "One of the most populous and most densely populated major city in USA"
     ).setAux(auxName, "Aux for info")
-    val newYorkRelated = getOrNewMutableListField(newYorkCityInfo, "related_city_info")
-    newYorkRelated.setAux(auxName, "Aux for related city list")
-    addRelatedCity(
-        newYorkRelated,
-        "Albany",
-        "New York",
-        "United States of America",
-        auxName,
-        "Aux for association element in list"
-    )
-    addRelatedCity(newYorkRelated, "Princeton", "New Jersey", "United States of America", auxName)
-    addRelatedCity(
-        newYorkRelated,
-        "San Francisco",
-        "California",
-        "United States of America",
-        auxName,
-        "Aux for association element in list after an element without aux"
-    )
     cityInfoSet.addValue(newYorkCityInfo)
 
     val albanyCityInfo = getNewMutableSetEntity(cityInfoSet)
     setStringSingleField(albanyCityInfo, "info", "Capital of New York state")
     addCity(albanyCityInfo, "Albany", "New York", "United States of America")
-    val albanyRelated = getOrNewMutableListField(albanyCityInfo, "related_city_info")
-    addRelatedCity(albanyRelated, "New York City", "New York", "United States of America", auxName)
     cityInfoSet.addValue(albanyCityInfo)
 
     val princetonCityInfo = getNewMutableSetEntity(cityInfoSet)
     setStringSingleField(princetonCityInfo, "info", "Home of Princeton University")
-    getOrNewMutableListField(princetonCityInfo, "related_city_info")
     addCity(princetonCityInfo, "Princeton", "New Jersey", "United States of America")
     cityInfoSet.addValue(princetonCityInfo)
 
@@ -142,7 +117,7 @@ fun newAddressBookWithCoreClasses(auxName: String): MainModel {
     addCity(sanFranciscoCityInfo, "San Francisco", "California", "United States of America")
     cityInfoSet.addValue(sanFranciscoCityInfo)
 
-    return main
+    return root
 }
 
 fun addRelation(
@@ -190,20 +165,4 @@ fun addCity(parentEntity: MutableEntityModel, name: String, state: String, count
     setStringSingleField(city, "name", name)
     setStringSingleField(city, "state", state)
     setStringSingleField(city, "country", country)
-}
-
-fun addRelatedCity(
-    relatedList: MutableListFieldModel,
-    name: String,
-    state: String,
-    country: String,
-    auxName: String,
-    aux: String? = null
-) {
-    val relatedAssociation = relatedList.getOrNewValue() as MutableAssociationModel
-    aux?.also { relatedAssociation.setAux(auxName, it) }
-    val cityInfoSet = getOrNewMutableSetField(relatedAssociation.value, "city_info")
-    val cityInfo = getNewMutableSetEntity(cityInfoSet)
-    addCity(cityInfo, name, state, country)
-    cityInfoSet.addValue(cityInfo)
 }

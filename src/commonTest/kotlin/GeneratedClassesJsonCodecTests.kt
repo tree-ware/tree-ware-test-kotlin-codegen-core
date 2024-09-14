@@ -1,12 +1,13 @@
 import addressBook.main.AddressBookColor
 import addressBook.main.AddressBookRelationship
+import addressBook.main.AddressBookRoot
 import org.treeWare.model.assertMatchesJson
+import org.treeWare.model.decodeJsonFileIntoEntity
 import org.treeWare.model.decoder.stateMachine.MultiAuxDecodingStateMachineFactory
 import org.treeWare.model.decoder.stateMachine.StringAuxStateMachine
 import org.treeWare.model.encoder.EncodePasswords
 import org.treeWare.model.encoder.MultiAuxEncoder
 import org.treeWare.model.encoder.StringAuxEncoder
-import org.treeWare.model.getMainModelFromJsonFile
 import org.treeWare.model.testRoundTrip
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -23,51 +24,47 @@ class GeneratedClassesJsonCodecTests {
             multiAuxDecodingStateMachineFactory = MultiAuxDecodingStateMachineFactory(auxName to {
                 StringAuxStateMachine(it)
             }),
-            metaModel = addressBookMetaModel,
-            mainModel = MutableAddressBook(),
+            entity = addressBook{},
         )
     }
 
     @Test
     fun elements_in_decoded_model_must_be_readable() {
         val auxName = "aux"
-        val mutableModel = MutableAddressBook()
-        getMainModelFromJsonFile(
-            meta = addressBookMetaModel,
+        val mutableModel = addressBook{}
+        decodeJsonFileIntoEntity(
             "address_book.json",
             multiAuxDecodingStateMachineFactory = MultiAuxDecodingStateMachineFactory(auxName to {
                 StringAuxStateMachine(it)
             }),
-            mainModel = mutableModel,
+            entity = mutableModel,
         )
         // Also access the model via the read-only interface.
-        val model: AddressBook = mutableModel
+        val model: AddressBookRoot = mutableModel
 
         // Access the paths in the decoded model.
-        assertNotNull(model.modelRoot)
-        assertNotNull(mutableModel.modelRoot)
-        assertEquals("Address Book", model.modelRoot?.name)
-        assertEquals("Address Book", mutableModel.modelRoot?.name)
-        assertEquals(1587147731UL, model.modelRoot?.lastUpdated)
-        assertEquals(1587147731UL, mutableModel.modelRoot?.lastUpdated)
+        assertEquals("Address Book", model.name)
+        assertEquals("Address Book", mutableModel.name)
+        assertEquals(1587147731UL, model.lastUpdated)
+        assertEquals(1587147731UL, mutableModel.lastUpdated)
 
-        assertNotNull(model.modelRoot?.settings)
-        assertNotNull(mutableModel.modelRoot?.settings)
-        assertEquals(true, model.modelRoot?.settings?.lastNameFirst)
-        assertEquals(true, mutableModel.modelRoot?.settings?.lastNameFirst)
-        assertEquals(false, model.modelRoot?.settings?.encryptHeroName)
-        assertEquals(false, mutableModel.modelRoot?.settings?.encryptHeroName)
-        assertEquals(AddressBookColor.WHITE, model.modelRoot?.settings?.backgroundColor)
-        assertEquals(AddressBookColor.WHITE, mutableModel.modelRoot?.settings?.backgroundColor)
+        assertNotNull(model.settings)
+        assertNotNull(mutableModel.settings)
+        assertEquals(true, model.settings?.lastNameFirst)
+        assertEquals(true, mutableModel.settings?.lastNameFirst)
+        assertEquals(false, model.settings?.encryptHeroName)
+        assertEquals(false, mutableModel.settings?.encryptHeroName)
+        assertEquals(AddressBookColor.WHITE, model.settings?.backgroundColor)
+        assertEquals(AddressBookColor.WHITE, mutableModel.settings?.backgroundColor)
 
-        assertEquals(AddressBookColor.VIOLET, model.modelRoot?.settings?.advanced?.borderColor)
-        assertEquals(AddressBookColor.VIOLET, mutableModel.modelRoot?.settings?.advanced?.borderColor)
+        assertEquals(AddressBookColor.VIOLET, model.settings?.advanced?.borderColor)
+        assertEquals(AddressBookColor.VIOLET, mutableModel.settings?.advanced?.borderColor)
 
-        assertEquals(2, model.modelRoot?.groups?.count())
-        assertEquals(2, mutableModel.modelRoot?.groups?.count())
+        assertEquals(2, model.groups?.count())
+        assertEquals(2, mutableModel.groups?.count())
         //
-        val group0 = model.modelRoot?.groups?.elementAt(0)
-        val mutableGroup0 = mutableModel.modelRoot?.groups?.elementAt(0)
+        val group0 = model.groups?.elementAt(0)
+        val mutableGroup0 = mutableModel.groups?.elementAt(0)
         assertEquals("DC", group0?.name)
         assertEquals("DC", mutableGroup0?.name)
         assertEquals(1, group0?.subGroups?.count())
@@ -76,16 +73,16 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Superman", group0?.subGroups?.elementAt(0)?.name)
         assertEquals("Superman", mutableGroup0?.subGroups?.elementAt(0)?.name)
         //
-        val group1 = model.modelRoot?.groups?.elementAt(1)
-        val mutableGroup1 = mutableModel.modelRoot?.groups?.elementAt(1)
+        val group1 = model.groups?.elementAt(1)
+        val mutableGroup1 = mutableModel.groups?.elementAt(1)
         assertEquals("Marvel", group1?.name)
         assertEquals("Marvel", mutableGroup1?.name)
 
-        assertEquals(2, model.modelRoot?.person?.count())
-        assertEquals(2, mutableModel.modelRoot?.person?.count())
+        assertEquals(2, model.person?.count())
+        assertEquals(2, mutableModel.person?.count())
         //
-        val person0 = model.modelRoot?.person?.elementAt(0)
-        val mutablePerson0 = mutableModel.modelRoot?.person?.elementAt(0)
+        val person0 = model.person?.elementAt(0)
+        val mutablePerson0 = mutableModel.person?.elementAt(0)
         assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", person0?.id)
         assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", mutablePerson0?.id)
         assertEquals("Clark", person0?.firstName)
@@ -127,8 +124,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Superman", person0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
         assertEquals("Superman", mutablePerson0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
         //
-        val person1 = model.modelRoot?.person?.elementAt(1)
-        val mutablePerson1 = mutableModel.modelRoot?.person?.elementAt(1)
+        val person1 = model.person?.elementAt(1)
+        val mutablePerson1 = mutableModel.person?.elementAt(1)
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", person1?.id)
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", mutablePerson1?.id)
         assertEquals("Lois", person1?.firstName)
@@ -168,11 +165,11 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Superman", person1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
         assertEquals("Superman", mutablePerson1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
 
-        assertEquals(4, model.modelRoot?.cityInfo?.count())
-        assertEquals(4, mutableModel.modelRoot?.cityInfo?.count())
+        assertEquals(4, model.cityInfo?.count())
+        assertEquals(4, mutableModel.cityInfo?.count())
         //
-        val cityInfo0 = model.modelRoot?.cityInfo?.elementAt(0)
-        val mutableCityInfo0 = mutableModel.modelRoot?.cityInfo?.elementAt(0)
+        val cityInfo0 = model.cityInfo?.elementAt(0)
+        val mutableCityInfo0 = mutableModel.cityInfo?.elementAt(0)
         ////
         val cityInfo0City = cityInfo0?.city
         val mutableCityInfo0City = mutableCityInfo0?.city
@@ -186,8 +183,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("One of the most populous and most densely populated major city in USA", cityInfo0?.info)
         assertEquals("One of the most populous and most densely populated major city in USA", mutableCityInfo0?.info)
         //
-        val cityInfo1 = model.modelRoot?.cityInfo?.elementAt(1)
-        val mutableCityInfo1 = mutableModel.modelRoot?.cityInfo?.elementAt(1)
+        val cityInfo1 = model.cityInfo?.elementAt(1)
+        val mutableCityInfo1 = mutableModel.cityInfo?.elementAt(1)
         ////
         val cityInfo1City = cityInfo1?.city
         val mutableCityInfo1City = mutableCityInfo1?.city
@@ -201,8 +198,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Capital of New York state", cityInfo1?.info)
         assertEquals("Capital of New York state", mutableCityInfo1?.info)
         //
-        val cityInfo2 = model.modelRoot?.cityInfo?.elementAt(2)
-        val mutableCityInfo2 = mutableModel.modelRoot?.cityInfo?.elementAt(2)
+        val cityInfo2 = model.cityInfo?.elementAt(2)
+        val mutableCityInfo2 = mutableModel.cityInfo?.elementAt(2)
         ////
         val cityInfo2City = cityInfo2?.city
         val mutableCityInfo2City = mutableCityInfo2?.city
@@ -216,8 +213,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Home of Princeton University", cityInfo2?.info)
         assertEquals("Home of Princeton University", mutableCityInfo2?.info)
         //
-        val cityInfo3 = model.modelRoot?.cityInfo?.elementAt(3)
-        val mutableCityInfo3 = mutableModel.modelRoot?.cityInfo?.elementAt(3)
+        val cityInfo3 = model.cityInfo?.elementAt(3)
+        val mutableCityInfo3 = mutableModel.cityInfo?.elementAt(3)
         ////
         val cityInfo3City = cityInfo3?.city
         val mutableCityInfo3City = mutableCityInfo3?.city
@@ -251,43 +248,40 @@ class GeneratedClassesJsonCodecTests {
     @Test
     fun elements_in_decoded_model_must_be_readable_with_entity_set_keys() {
         val auxName = "aux"
-        val mutableModel = MutableAddressBook()
-        getMainModelFromJsonFile(
-            meta = addressBookMetaModel,
+        val mutableModel = addressBook{}
+        decodeJsonFileIntoEntity(
             "address_book.json",
             multiAuxDecodingStateMachineFactory = MultiAuxDecodingStateMachineFactory(auxName to {
                 StringAuxStateMachine(it)
             }),
-            mainModel = mutableModel,
+            entity = mutableModel
         )
         // Also access the model via the read-only interface.
-        val model: AddressBook = mutableModel
+        val model: AddressBookRoot = mutableModel
 
         // Access the paths in the decoded model.
-        assertNotNull(model.modelRoot)
-        assertNotNull(mutableModel.modelRoot)
-        assertEquals("Address Book", model.modelRoot?.name)
-        assertEquals("Address Book", mutableModel.modelRoot?.name)
-        assertEquals(1587147731UL, model.modelRoot?.lastUpdated)
-        assertEquals(1587147731UL, mutableModel.modelRoot?.lastUpdated)
+        assertEquals("Address Book", model.name)
+        assertEquals("Address Book", mutableModel.name)
+        assertEquals(1587147731UL, model.lastUpdated)
+        assertEquals(1587147731UL, mutableModel.lastUpdated)
 
-        assertNotNull(model.modelRoot?.settings)
-        assertNotNull(mutableModel.modelRoot?.settings)
-        assertEquals(true, model.modelRoot?.settings?.lastNameFirst)
-        assertEquals(true, mutableModel.modelRoot?.settings?.lastNameFirst)
-        assertEquals(false, model.modelRoot?.settings?.encryptHeroName)
-        assertEquals(false, mutableModel.modelRoot?.settings?.encryptHeroName)
-        assertEquals(AddressBookColor.WHITE, model.modelRoot?.settings?.backgroundColor)
-        assertEquals(AddressBookColor.WHITE, mutableModel.modelRoot?.settings?.backgroundColor)
+        assertNotNull(model.settings)
+        assertNotNull(mutableModel.settings)
+        assertEquals(true, model.settings?.lastNameFirst)
+        assertEquals(true, mutableModel.settings?.lastNameFirst)
+        assertEquals(false, model.settings?.encryptHeroName)
+        assertEquals(false, mutableModel.settings?.encryptHeroName)
+        assertEquals(AddressBookColor.WHITE, model.settings?.backgroundColor)
+        assertEquals(AddressBookColor.WHITE, mutableModel.settings?.backgroundColor)
 
-        assertEquals(AddressBookColor.VIOLET, model.modelRoot?.settings?.advanced?.borderColor)
-        assertEquals(AddressBookColor.VIOLET, mutableModel.modelRoot?.settings?.advanced?.borderColor)
+        assertEquals(AddressBookColor.VIOLET, model.settings?.advanced?.borderColor)
+        assertEquals(AddressBookColor.VIOLET, mutableModel.settings?.advanced?.borderColor)
 
-        assertEquals(2, model.modelRoot?.groups?.count())
-        assertEquals(2, mutableModel.modelRoot?.groups?.count())
+        assertEquals(2, model.groups?.count())
+        assertEquals(2, mutableModel.groups?.count())
         //
-        val group0 = model.modelRoot?.groups("DC")
-        val mutableGroup0 = mutableModel.modelRoot?.groups("DC")
+        val group0 = model.groups("DC")
+        val mutableGroup0 = mutableModel.groups("DC")
         assertNotNull(group0)
         assertNotNull(mutableGroup0)
         assertEquals("DC", group0.name)
@@ -302,18 +296,18 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Superman", group0Subgroup0.name)
         assertEquals("Superman", mutableGroup0Subgroup0.name)
         //
-        val group1 = model.modelRoot?.groups("Marvel")
-        val mutableGroup1 = mutableModel.modelRoot?.groups("Marvel")
+        val group1 = model.groups("Marvel")
+        val mutableGroup1 = mutableModel.groups("Marvel")
         assertNotNull(group1)
         assertNotNull(mutableGroup1)
         assertEquals("Marvel", group1.name)
         assertEquals("Marvel", mutableGroup1.name)
 
-        assertEquals(2, model.modelRoot?.person?.count())
-        assertEquals(2, mutableModel.modelRoot?.person?.count())
+        assertEquals(2, model.person?.count())
+        assertEquals(2, mutableModel.person?.count())
         //
-        val person0 = model.modelRoot?.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
-        val mutablePerson0 = mutableModel.modelRoot?.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
+        val person0 = model.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
+        val mutablePerson0 = mutableModel.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
         assertNotNull(person0)
         assertNotNull(mutablePerson0)
         assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", person0.id)
@@ -349,16 +343,22 @@ class GeneratedClassesJsonCodecTests {
         assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson0Relation0.relationship)
         val person0Relation0Person = person0Relation0.person
         val mutablePerson0Relation0Person = mutablePerson0Relation0.person
-        assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", person0Relation0Person?.person("a8aacf55-7810-4b43-afe5-4344f25435fd")?.id)
-        assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", mutablePerson0Relation0Person?.person("a8aacf55-7810-4b43-afe5-4344f25435fd")?.id)
+        assertEquals(
+            "a8aacf55-7810-4b43-afe5-4344f25435fd",
+            person0Relation0Person?.person("a8aacf55-7810-4b43-afe5-4344f25435fd")?.id
+        )
+        assertEquals(
+            "a8aacf55-7810-4b43-afe5-4344f25435fd",
+            mutablePerson0Relation0Person?.person("a8aacf55-7810-4b43-afe5-4344f25435fd")?.id
+        )
         //
         val person0Group = person0.group
         val mutablePerson0Group = mutablePerson0.group
         assertNotNull(person0Group?.groups("DC")?.subGroups("Superman"))
         assertNotNull(mutablePerson0Group?.groups("DC")?.subGroups("Superman"))
         //
-        val person1 = model.modelRoot?.person("a8aacf55-7810-4b43-afe5-4344f25435fd")
-        val mutablePerson1 = mutableModel.modelRoot?.person("a8aacf55-7810-4b43-afe5-4344f25435fd")
+        val person1 = model.person("a8aacf55-7810-4b43-afe5-4344f25435fd")
+        val mutablePerson1 = mutableModel.person("a8aacf55-7810-4b43-afe5-4344f25435fd")
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", person1?.id)
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", mutablePerson1?.id)
         assertEquals("Lois", person1?.firstName)
@@ -388,19 +388,25 @@ class GeneratedClassesJsonCodecTests {
         assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson1Relation0?.relationship)
         val person1Relation0Person = person1Relation0?.person
         val mutablePerson1Relation0Person = mutablePerson1Relation0?.person
-        assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", person1Relation0Person?.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")?.id)
-        assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", mutablePerson1Relation0Person?.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")?.id)
+        assertEquals(
+            "cc477201-48ec-4367-83a4-7fdbd92f8a6f",
+            person1Relation0Person?.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")?.id
+        )
+        assertEquals(
+            "cc477201-48ec-4367-83a4-7fdbd92f8a6f",
+            mutablePerson1Relation0Person?.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")?.id
+        )
         //
         val person1Group = person1?.group
         val mutablePerson1Group = mutablePerson1?.group
         assertNotNull(person1Group?.groups("DC")?.subGroups("Superman"))
         assertNotNull(mutablePerson1Group?.groups("DC")?.subGroups("Superman"))
 
-        assertEquals(4, model.modelRoot?.cityInfo?.count())
-        assertEquals(4, mutableModel.modelRoot?.cityInfo?.count())
+        assertEquals(4, model.cityInfo?.count())
+        assertEquals(4, mutableModel.cityInfo?.count())
         //
-        val cityInfo0 = model.modelRoot?.cityInfo("New York City", "New York", "United States of America")
-        val mutableCityInfo0 = mutableModel.modelRoot?.cityInfo("New York City", "New York", "United States of America")
+        val cityInfo0 = model.cityInfo("New York City", "New York", "United States of America")
+        val mutableCityInfo0 = mutableModel.cityInfo("New York City", "New York", "United States of America")
         ////
         val cityInfo0City = cityInfo0?.city
         val mutableCityInfo0City = mutableCityInfo0?.city
@@ -414,8 +420,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("One of the most populous and most densely populated major city in USA", cityInfo0?.info)
         assertEquals("One of the most populous and most densely populated major city in USA", mutableCityInfo0?.info)
         //
-        val cityInfo1 = model.modelRoot?.cityInfo("Albany", "New York", "United States of America")
-        val mutableCityInfo1 = mutableModel.modelRoot?.cityInfo("Albany", "New York", "United States of America")
+        val cityInfo1 = model.cityInfo("Albany", "New York", "United States of America")
+        val mutableCityInfo1 = mutableModel.cityInfo("Albany", "New York", "United States of America")
         ////
         val cityInfo1City = cityInfo1?.city
         val mutableCityInfo1City = mutableCityInfo1?.city
@@ -429,8 +435,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Capital of New York state", cityInfo1?.info)
         assertEquals("Capital of New York state", mutableCityInfo1?.info)
         //
-        val cityInfo2 = model.modelRoot?.cityInfo("Princeton", "New Jersey", "United States of America")
-        val mutableCityInfo2 = mutableModel.modelRoot?.cityInfo("Princeton", "New Jersey", "United States of America")
+        val cityInfo2 = model.cityInfo("Princeton", "New Jersey", "United States of America")
+        val mutableCityInfo2 = mutableModel.cityInfo("Princeton", "New Jersey", "United States of America")
         ////
         val cityInfo2City = cityInfo2?.city
         val mutableCityInfo2City = mutableCityInfo2?.city
@@ -444,8 +450,9 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Home of Princeton University", cityInfo2?.info)
         assertEquals("Home of Princeton University", mutableCityInfo2?.info)
         //
-        val cityInfo3 = model.modelRoot?.cityInfo("San Francisco", "California", "United States of America")
-        val mutableCityInfo3 = mutableModel.modelRoot?.cityInfo("San Francisco", "California", "United States of America")
+        val cityInfo3 = model.cityInfo("San Francisco", "California", "United States of America")
+        val mutableCityInfo3 =
+            mutableModel.cityInfo("San Francisco", "California", "United States of America")
         ////
         val cityInfo3City = cityInfo3?.city
         val mutableCityInfo3City = mutableCityInfo3?.city
