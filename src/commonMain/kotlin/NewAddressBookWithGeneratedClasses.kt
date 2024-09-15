@@ -1,6 +1,6 @@
-import addressBook.main.AddressBookColor
-import addressBook.main.AddressBookRelationship
-import addressBook.main.MutableAddressBookRoot
+import org.treeWare.test.addressBook.main.AddressBookColor
+import org.treeWare.test.addressBook.main.AddressBookRelationship
+import org.treeWare.test.addressBook.main.MutableAddressBookRoot
 
 fun newAddressBookWithGeneratedClasses(): MutableAddressBookRoot = addressBook {
     name = "Address Book"
