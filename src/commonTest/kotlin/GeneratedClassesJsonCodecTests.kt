@@ -9,6 +9,7 @@ import org.treeWare.model.encoder.EncodePasswords
 import org.treeWare.model.encoder.MultiAuxEncoder
 import org.treeWare.model.encoder.StringAuxEncoder
 import org.treeWare.model.testRoundTrip
+import org.treeWare.test.addressBook.addressBook
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull

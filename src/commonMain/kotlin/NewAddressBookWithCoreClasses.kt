@@ -1,5 +1,6 @@
 import org.treeWare.metaModel.getResolvedRootMeta
 import org.treeWare.model.core.*
+import org.treeWare.test.addressBook.addressBookMetaModel
 
 fun newAddressBookWithCoreClasses(auxName: String): EntityModel {
     val rootEntityMeta = getResolvedRootMeta(addressBookMetaModel)

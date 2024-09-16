@@ -1,3 +1,4 @@
+import org.treeWare.test.addressBook.addressBook
 import org.treeWare.test.addressBook.main.AddressBookColor
 import org.treeWare.test.addressBook.main.AddressBookRelationship
 import org.treeWare.test.addressBook.main.MutableAddressBookRoot
