@@ -22,7 +22,7 @@
       "name": "Marvel"
     }
   ],
-  "person": [
+  "persons": [
     {
       "id": "cc477201-48ec-4367-83a4-7fdbd92f8a6f",
       "first_name": "Clark",
@@ -34,12 +34,12 @@
       "main_secret": {
         "unencrypted": "Alien from Krypton"
       },
-      "relation": [
+      "relations": [
         {
           "id": "05ade278-4b44-43da-a0cc-14463854e397",
           "relationship": "colleague",
           "person": {
-            "person": [
+            "persons": [
               {
                 "id": "a8aacf55-7810-4b43-afe5-4344f25435fd"
               }
@@ -72,12 +72,12 @@
         "encrypted": "test-encrypted-main-secret",
         "cipher_version": 1
       },
-      "relation": [
+      "relations": [
         {
           "id": "16634916-8f83-4376-ad42-37038e108a0b",
           "relationship": "colleague",
           "person": {
-            "person": [
+            "persons": [
               {
                 "id": "cc477201-48ec-4367-83a4-7fdbd92f8a6f"
               }
@@ -99,7 +99,7 @@
       }
     }
   ],
-  "city_info": [
+  "cities": [
     {
       "city": {
         "name": "New York City",

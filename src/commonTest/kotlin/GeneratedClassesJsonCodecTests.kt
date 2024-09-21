@@ -79,11 +79,11 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Marvel", group1?.name)
         assertEquals("Marvel", mutableGroup1?.name)
 
-        assertEquals(2, model.person?.count())
-        assertEquals(2, mutableModel.person?.count())
+        assertEquals(2, model.persons?.count())
+        assertEquals(2, mutableModel.persons?.count())
         //
-        val person0 = model.person?.elementAt(0)
-        val mutablePerson0 = mutableModel.person?.elementAt(0)
+        val person0 = model.persons?.elementAt(0)
+        val mutablePerson0 = mutableModel.persons?.elementAt(0)
         assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", person0?.id)
         assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", mutablePerson0?.id)
         assertEquals("Clark", person0?.firstName)
@@ -104,19 +104,19 @@ class GeneratedClassesJsonCodecTests {
         assertEquals(null, mutablePerson0?.mainSecret?.encrypted)
         assertEquals(0, person0?.mainSecret?.cipherVersion)
         assertEquals(0, mutablePerson0?.mainSecret?.cipherVersion)
-        assertEquals(1, person0?.relation?.count())
-        assertEquals(1, mutablePerson0?.relation?.count())
+        assertEquals(1, person0?.relations?.count())
+        assertEquals(1, mutablePerson0?.relations?.count())
         ////
-        val person0Relation0 = person0?.relation?.elementAt(0)
-        val mutablePerson0Relation0 = mutablePerson0?.relation?.elementAt(0)
+        val person0Relation0 = person0?.relations?.elementAt(0)
+        val mutablePerson0Relation0 = mutablePerson0?.relations?.elementAt(0)
         assertEquals("05ade278-4b44-43da-a0cc-14463854e397", person0Relation0?.id)
         assertEquals("05ade278-4b44-43da-a0cc-14463854e397", mutablePerson0Relation0?.id)
         assertEquals(AddressBookRelationship.COLLEAGUE, person0Relation0?.relationship)
         assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson0Relation0?.relationship)
         val person0Relation0Person = person0Relation0?.person
         val mutablePerson0Relation0Person = mutablePerson0Relation0?.person
-        assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", person0Relation0Person?.person?.elementAt(0)?.id)
-        assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", mutablePerson0Relation0Person?.person?.elementAt(0)?.id)
+        assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", person0Relation0Person?.persons?.elementAt(0)?.id)
+        assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", mutablePerson0Relation0Person?.persons?.elementAt(0)?.id)
         //
         val person0Group = person0?.group
         val mutablePerson0Group = mutablePerson0?.group
@@ -125,8 +125,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Superman", person0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
         assertEquals("Superman", mutablePerson0Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
         //
-        val person1 = model.person?.elementAt(1)
-        val mutablePerson1 = mutableModel.person?.elementAt(1)
+        val person1 = model.persons?.elementAt(1)
+        val mutablePerson1 = mutableModel.persons?.elementAt(1)
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", person1?.id)
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", mutablePerson1?.id)
         assertEquals("Lois", person1?.firstName)
@@ -145,19 +145,19 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("test-encrypted-main-secret", mutablePerson1?.mainSecret?.encrypted)
         assertEquals(1, person1?.mainSecret?.cipherVersion)
         assertEquals(1, mutablePerson1?.mainSecret?.cipherVersion)
-        assertEquals(1, person1?.relation?.count())
-        assertEquals(1, mutablePerson1?.relation?.count())
+        assertEquals(1, person1?.relations?.count())
+        assertEquals(1, mutablePerson1?.relations?.count())
         ////
-        val person1Relation0 = person1?.relation?.elementAt(0)
-        val mutablePerson1Relation0 = mutablePerson1?.relation?.elementAt(0)
+        val person1Relation0 = person1?.relations?.elementAt(0)
+        val mutablePerson1Relation0 = mutablePerson1?.relations?.elementAt(0)
         assertEquals("16634916-8f83-4376-ad42-37038e108a0b", person1Relation0?.id)
         assertEquals("16634916-8f83-4376-ad42-37038e108a0b", mutablePerson1Relation0?.id)
         assertEquals(AddressBookRelationship.COLLEAGUE, person1Relation0?.relationship)
         assertEquals(AddressBookRelationship.COLLEAGUE, mutablePerson1Relation0?.relationship)
         val person1Relation0Person = person1Relation0?.person
         val mutablePerson1Relation0Person = mutablePerson1Relation0?.person
-        assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", person1Relation0Person?.person?.elementAt(0)?.id)
-        assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", mutablePerson1Relation0Person?.person?.elementAt(0)?.id)
+        assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", person1Relation0Person?.persons?.elementAt(0)?.id)
+        assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", mutablePerson1Relation0Person?.persons?.elementAt(0)?.id)
         //
         val person1Group = person1?.group
         val mutablePerson1Group = mutablePerson1?.group
@@ -166,11 +166,11 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Superman", person1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
         assertEquals("Superman", mutablePerson1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
 
-        assertEquals(4, model.cityInfo?.count())
-        assertEquals(4, mutableModel.cityInfo?.count())
+        assertEquals(4, model.cities?.count())
+        assertEquals(4, mutableModel.cities?.count())
         //
-        val cityInfo0 = model.cityInfo?.elementAt(0)
-        val mutableCityInfo0 = mutableModel.cityInfo?.elementAt(0)
+        val cityInfo0 = model.cities?.elementAt(0)
+        val mutableCityInfo0 = mutableModel.cities?.elementAt(0)
         ////
         val cityInfo0City = cityInfo0?.city
         val mutableCityInfo0City = mutableCityInfo0?.city
@@ -184,8 +184,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("One of the most populous and most densely populated major city in USA", cityInfo0?.info)
         assertEquals("One of the most populous and most densely populated major city in USA", mutableCityInfo0?.info)
         //
-        val cityInfo1 = model.cityInfo?.elementAt(1)
-        val mutableCityInfo1 = mutableModel.cityInfo?.elementAt(1)
+        val cityInfo1 = model.cities?.elementAt(1)
+        val mutableCityInfo1 = mutableModel.cities?.elementAt(1)
         ////
         val cityInfo1City = cityInfo1?.city
         val mutableCityInfo1City = mutableCityInfo1?.city
@@ -199,8 +199,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Capital of New York state", cityInfo1?.info)
         assertEquals("Capital of New York state", mutableCityInfo1?.info)
         //
-        val cityInfo2 = model.cityInfo?.elementAt(2)
-        val mutableCityInfo2 = mutableModel.cityInfo?.elementAt(2)
+        val cityInfo2 = model.cities?.elementAt(2)
+        val mutableCityInfo2 = mutableModel.cities?.elementAt(2)
         ////
         val cityInfo2City = cityInfo2?.city
         val mutableCityInfo2City = mutableCityInfo2?.city
@@ -214,8 +214,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Home of Princeton University", cityInfo2?.info)
         assertEquals("Home of Princeton University", mutableCityInfo2?.info)
         //
-        val cityInfo3 = model.cityInfo?.elementAt(3)
-        val mutableCityInfo3 = mutableModel.cityInfo?.elementAt(3)
+        val cityInfo3 = model.cities?.elementAt(3)
+        val mutableCityInfo3 = mutableModel.cities?.elementAt(3)
         ////
         val cityInfo3City = cityInfo3?.city
         val mutableCityInfo3City = mutableCityInfo3?.city
@@ -304,11 +304,11 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Marvel", group1.name)
         assertEquals("Marvel", mutableGroup1.name)
 
-        assertEquals(2, model.person?.count())
-        assertEquals(2, mutableModel.person?.count())
+        assertEquals(2, model.persons?.count())
+        assertEquals(2, mutableModel.persons?.count())
         //
-        val person0 = model.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
-        val mutablePerson0 = mutableModel.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
+        val person0 = model.persons("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
+        val mutablePerson0 = mutableModel.persons("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
         assertNotNull(person0)
         assertNotNull(mutablePerson0)
         assertEquals("cc477201-48ec-4367-83a4-7fdbd92f8a6f", person0.id)
@@ -331,11 +331,11 @@ class GeneratedClassesJsonCodecTests {
         assertEquals(null, mutablePerson0.mainSecret?.encrypted)
         assertEquals(0, person0.mainSecret?.cipherVersion)
         assertEquals(0, mutablePerson0.mainSecret?.cipherVersion)
-        assertEquals(1, person0.relation?.count())
-        assertEquals(1, mutablePerson0.relation?.count())
+        assertEquals(1, person0.relations?.count())
+        assertEquals(1, mutablePerson0.relations?.count())
         ////
-        val person0Relation0 = person0.relation("05ade278-4b44-43da-a0cc-14463854e397")
-        val mutablePerson0Relation0 = mutablePerson0.relation("05ade278-4b44-43da-a0cc-14463854e397")
+        val person0Relation0 = person0.relations("05ade278-4b44-43da-a0cc-14463854e397")
+        val mutablePerson0Relation0 = mutablePerson0.relations("05ade278-4b44-43da-a0cc-14463854e397")
         assertNotNull(person0Relation0)
         assertNotNull(mutablePerson0Relation0)
         assertEquals("05ade278-4b44-43da-a0cc-14463854e397", person0Relation0.id)
@@ -346,11 +346,11 @@ class GeneratedClassesJsonCodecTests {
         val mutablePerson0Relation0Person = mutablePerson0Relation0.person
         assertEquals(
             "a8aacf55-7810-4b43-afe5-4344f25435fd",
-            person0Relation0Person?.person("a8aacf55-7810-4b43-afe5-4344f25435fd")?.id
+            person0Relation0Person?.persons("a8aacf55-7810-4b43-afe5-4344f25435fd")?.id
         )
         assertEquals(
             "a8aacf55-7810-4b43-afe5-4344f25435fd",
-            mutablePerson0Relation0Person?.person("a8aacf55-7810-4b43-afe5-4344f25435fd")?.id
+            mutablePerson0Relation0Person?.persons("a8aacf55-7810-4b43-afe5-4344f25435fd")?.id
         )
         //
         val person0Group = person0.group
@@ -358,8 +358,8 @@ class GeneratedClassesJsonCodecTests {
         assertNotNull(person0Group?.groups("DC")?.subGroups("Superman"))
         assertNotNull(mutablePerson0Group?.groups("DC")?.subGroups("Superman"))
         //
-        val person1 = model.person("a8aacf55-7810-4b43-afe5-4344f25435fd")
-        val mutablePerson1 = mutableModel.person("a8aacf55-7810-4b43-afe5-4344f25435fd")
+        val person1 = model.persons("a8aacf55-7810-4b43-afe5-4344f25435fd")
+        val mutablePerson1 = mutableModel.persons("a8aacf55-7810-4b43-afe5-4344f25435fd")
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", person1?.id)
         assertEquals("a8aacf55-7810-4b43-afe5-4344f25435fd", mutablePerson1?.id)
         assertEquals("Lois", person1?.firstName)
@@ -378,11 +378,11 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("test-encrypted-main-secret", mutablePerson1?.mainSecret?.encrypted)
         assertEquals(1, person1?.mainSecret?.cipherVersion)
         assertEquals(1, mutablePerson1?.mainSecret?.cipherVersion)
-        assertEquals(1, person1?.relation?.count())
-        assertEquals(1, mutablePerson1?.relation?.count())
+        assertEquals(1, person1?.relations?.count())
+        assertEquals(1, mutablePerson1?.relations?.count())
         ////
-        val person1Relation0 = person1?.relation("16634916-8f83-4376-ad42-37038e108a0b")
-        val mutablePerson1Relation0 = mutablePerson1?.relation("16634916-8f83-4376-ad42-37038e108a0b")
+        val person1Relation0 = person1?.relations("16634916-8f83-4376-ad42-37038e108a0b")
+        val mutablePerson1Relation0 = mutablePerson1?.relations("16634916-8f83-4376-ad42-37038e108a0b")
         assertEquals("16634916-8f83-4376-ad42-37038e108a0b", person1Relation0?.id)
         assertEquals("16634916-8f83-4376-ad42-37038e108a0b", mutablePerson1Relation0?.id)
         assertEquals(AddressBookRelationship.COLLEAGUE, person1Relation0?.relationship)
@@ -391,11 +391,11 @@ class GeneratedClassesJsonCodecTests {
         val mutablePerson1Relation0Person = mutablePerson1Relation0?.person
         assertEquals(
             "cc477201-48ec-4367-83a4-7fdbd92f8a6f",
-            person1Relation0Person?.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")?.id
+            person1Relation0Person?.persons("cc477201-48ec-4367-83a4-7fdbd92f8a6f")?.id
         )
         assertEquals(
             "cc477201-48ec-4367-83a4-7fdbd92f8a6f",
-            mutablePerson1Relation0Person?.person("cc477201-48ec-4367-83a4-7fdbd92f8a6f")?.id
+            mutablePerson1Relation0Person?.persons("cc477201-48ec-4367-83a4-7fdbd92f8a6f")?.id
         )
         //
         val person1Group = person1?.group
@@ -403,11 +403,11 @@ class GeneratedClassesJsonCodecTests {
         assertNotNull(person1Group?.groups("DC")?.subGroups("Superman"))
         assertNotNull(mutablePerson1Group?.groups("DC")?.subGroups("Superman"))
 
-        assertEquals(4, model.cityInfo?.count())
-        assertEquals(4, mutableModel.cityInfo?.count())
+        assertEquals(4, model.cities?.count())
+        assertEquals(4, mutableModel.cities?.count())
         //
-        val cityInfo0 = model.cityInfo("New York City", "New York", "United States of America")
-        val mutableCityInfo0 = mutableModel.cityInfo("New York City", "New York", "United States of America")
+        val cityInfo0 = model.cities("New York City", "New York", "United States of America")
+        val mutableCityInfo0 = mutableModel.cities("New York City", "New York", "United States of America")
         ////
         val cityInfo0City = cityInfo0?.city
         val mutableCityInfo0City = mutableCityInfo0?.city
@@ -421,8 +421,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("One of the most populous and most densely populated major city in USA", cityInfo0?.info)
         assertEquals("One of the most populous and most densely populated major city in USA", mutableCityInfo0?.info)
         //
-        val cityInfo1 = model.cityInfo("Albany", "New York", "United States of America")
-        val mutableCityInfo1 = mutableModel.cityInfo("Albany", "New York", "United States of America")
+        val cityInfo1 = model.cities("Albany", "New York", "United States of America")
+        val mutableCityInfo1 = mutableModel.cities("Albany", "New York", "United States of America")
         ////
         val cityInfo1City = cityInfo1?.city
         val mutableCityInfo1City = mutableCityInfo1?.city
@@ -436,8 +436,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Capital of New York state", cityInfo1?.info)
         assertEquals("Capital of New York state", mutableCityInfo1?.info)
         //
-        val cityInfo2 = model.cityInfo("Princeton", "New Jersey", "United States of America")
-        val mutableCityInfo2 = mutableModel.cityInfo("Princeton", "New Jersey", "United States of America")
+        val cityInfo2 = model.cities("Princeton", "New Jersey", "United States of America")
+        val mutableCityInfo2 = mutableModel.cities("Princeton", "New Jersey", "United States of America")
         ////
         val cityInfo2City = cityInfo2?.city
         val mutableCityInfo2City = mutableCityInfo2?.city
@@ -451,9 +451,9 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Home of Princeton University", cityInfo2?.info)
         assertEquals("Home of Princeton University", mutableCityInfo2?.info)
         //
-        val cityInfo3 = model.cityInfo("San Francisco", "California", "United States of America")
+        val cityInfo3 = model.cities("San Francisco", "California", "United States of America")
         val mutableCityInfo3 =
-            mutableModel.cityInfo("San Francisco", "California", "United States of America")
+            mutableModel.cities("San Francisco", "California", "United States of America")
         ////
         val cityInfo3City = cityInfo3?.city
         val mutableCityInfo3City = mutableCityInfo3?.city

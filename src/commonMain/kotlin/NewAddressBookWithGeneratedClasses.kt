@@ -27,7 +27,7 @@ fun newAddressBookWithGeneratedClasses(): MutableAddressBookRoot = addressBook {
             name = "Marvel"
         }
     }
-    person {
+    persons {
         addressBookPerson {
             id = "cc477201-48ec-4367-83a4-7fdbd92f8a6f"
             firstName = "Clark"
@@ -39,12 +39,12 @@ fun newAddressBookWithGeneratedClasses(): MutableAddressBookRoot = addressBook {
             mainSecret {
                 unencrypted = "Alien from Krypton"
             }
-            relation {
+            relations {
                 addressBookRelation {
                     id = "05ade278-4b44-43da-a0cc-14463854e397"
                     relationship = AddressBookRelationship.COLLEAGUE
                     person {
-                        person {
+                        persons {
                             addressBookPerson {
                                 id = "a8aacf55-7810-4b43-afe5-4344f25435fd"
                             }
@@ -77,12 +77,12 @@ fun newAddressBookWithGeneratedClasses(): MutableAddressBookRoot = addressBook {
                 encrypted = "test-encrypted-main-secret"
                 cipherVersion = 1
             }
-            relation {
+            relations {
                 addressBookRelation {
                     id = "16634916-8f83-4376-ad42-37038e108a0b"
                     relationship = AddressBookRelationship.COLLEAGUE
                     person {
-                        person {
+                        persons {
                             addressBookPerson {
                                 id = "cc477201-48ec-4367-83a4-7fdbd92f8a6f"
                             }
@@ -104,7 +104,7 @@ fun newAddressBookWithGeneratedClasses(): MutableAddressBookRoot = addressBook {
             }
         }
     }
-    cityInfo {
+    cities {
         addressBookCityInfo {
             city {
                 name = "New York City"
