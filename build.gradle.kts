@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "org.tree-ware.tree-ware-test-kotlin-codegen-core"
-version = "0.1.1.0"
+version = "0.4.0.0"
 
 plugins {
     kotlin("multiplatform") version "1.7.0"
     id("idea")
-    id("org.tree-ware.core") version "0.3.1.0"
+    id("org.tree-ware.core") version "0.4.0.0"
     id("com.dorongold.task-tree") version "2.1.1" // for listing task dependencies
 }
 

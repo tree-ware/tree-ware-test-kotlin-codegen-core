@@ -1,10 +1,8 @@
-import org.treeWare.metaModel.getResolvedRootMeta
 import org.treeWare.model.core.*
-import org.treeWare.test.addressBook.addressBookMetaModel
+import org.treeWare.test.addressBook.addressBookRootEntityMeta
 
 fun newAddressBookWithCoreClasses(auxName: String): EntityModel {
-    val rootEntityMeta = getResolvedRootMeta(addressBookMetaModel)
-    val root = MutableEntityModel(rootEntityMeta, null)
+    val root = MutableEntityModel(addressBookRootEntityMeta, null)
     root.setAux(auxName, "Aux at address_book level")
     setStringSingleField(root, "name", "Address Book")
     setTimestampSingleField(root, "last_updated", 1587147731UL)
