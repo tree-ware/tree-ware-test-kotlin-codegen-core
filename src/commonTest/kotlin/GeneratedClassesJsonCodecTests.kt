@@ -1,6 +1,3 @@
-import org.treeWare.test.addressBook.main.AddressBookColor
-import org.treeWare.test.addressBook.main.AddressBookRelationship
-import org.treeWare.test.addressBook.main.AddressBookRoot
 import org.treeWare.model.assertMatchesJson
 import org.treeWare.model.decodeJsonFileIntoEntity
 import org.treeWare.model.decoder.stateMachine.MultiAuxDecodingStateMachineFactory
@@ -10,9 +7,13 @@ import org.treeWare.model.encoder.MultiAuxEncoder
 import org.treeWare.model.encoder.StringAuxEncoder
 import org.treeWare.model.testRoundTrip
 import org.treeWare.test.addressBook.addressBook
+import org.treeWare.test.addressBook.main.AddressBookColor
+import org.treeWare.test.addressBook.main.AddressBookRelationship
+import org.treeWare.test.addressBook.main.AddressBookRoot
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
+import kotlin.test.assertNull
 
 class GeneratedClassesJsonCodecTests {
     @Test
@@ -79,8 +80,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Marvel", group1?.name)
         assertEquals("Marvel", mutableGroup1?.name)
 
-        assertEquals(2, model.persons?.count())
-        assertEquals(2, mutableModel.persons?.count())
+        assertEquals(3, model.persons?.count())
+        assertEquals(3, mutableModel.persons?.count())
         //
         val person0 = model.persons?.elementAt(0)
         val mutablePerson0 = mutableModel.persons?.elementAt(0)
@@ -165,6 +166,13 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("DC", mutablePerson1Group?.groups?.elementAt(0)?.name)
         assertEquals("Superman", person1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
         assertEquals("Superman", mutablePerson1Group?.groups?.elementAt(0)?.subGroups?.elementAt(0)?.name)
+        //
+        val person2 = model.persons?.elementAt(2)
+        val mutablePerson2 = mutableModel.persons?.elementAt(2)
+        assertNull(person2?.id)
+        assertNull(mutablePerson2?.id)
+        assertNull(person2?.lastName)
+        assertNull(mutablePerson2?.lastName)
 
         assertEquals(4, model.cities?.count())
         assertEquals(4, mutableModel.cities?.count())
@@ -304,8 +312,8 @@ class GeneratedClassesJsonCodecTests {
         assertEquals("Marvel", group1.name)
         assertEquals("Marvel", mutableGroup1.name)
 
-        assertEquals(2, model.persons?.count())
-        assertEquals(2, mutableModel.persons?.count())
+        assertEquals(3, model.persons?.count())
+        assertEquals(3, mutableModel.persons?.count())
         //
         val person0 = model.persons("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
         val mutablePerson0 = mutableModel.persons("cc477201-48ec-4367-83a4-7fdbd92f8a6f")
@@ -402,6 +410,13 @@ class GeneratedClassesJsonCodecTests {
         val mutablePerson1Group = mutablePerson1?.group
         assertNotNull(person1Group?.groups("DC")?.subGroups("Superman"))
         assertNotNull(mutablePerson1Group?.groups("DC")?.subGroups("Superman"))
+        //
+        val person2 = model.persons(null)
+        val mutablePerson2 = mutableModel.persons(null)
+        assertNull(person2?.id)
+        assertNull(mutablePerson2?.id)
+        assertNull(person2?.lastName)
+        assertNull(mutablePerson2?.lastName)
 
         assertEquals(4, model.cities?.count())
         assertEquals(4, mutableModel.cities?.count())

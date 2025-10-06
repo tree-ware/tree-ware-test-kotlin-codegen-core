@@ -103,6 +103,10 @@ fun newAddressBookWithGeneratedClasses(): MutableAddressBookRoot = addressBook {
                 }
             }
         }
+        addressBookPerson {
+            id = null
+            lastName = null
+        }
     }
     cities {
         addressBookCityInfo {
